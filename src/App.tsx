@@ -1,24 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter } from 'react-router-dom';
+import Router from './router/Router';
+import { AuthProvider } from './contexts/AuthContext';
 
-function App() {
+/**
+ * The main application component.
+ * This component is responsible for routing and rendering the different pages of the application.
+ *
+ * @returns {JSX.Element} - The JSX element representing the application.
+ */
+function App(): JSX.Element {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    /**
+     * The root div of the application with custom CSS class and text color.
+     * It wraps the BrowserRouter component to enable routing.
+     */
+    <div className="App text-gray-800">
+      <AuthProvider>
+        <BrowserRouter>
+          <Router />
+        </BrowserRouter>
+      </AuthProvider>
     </div>
   );
 }
